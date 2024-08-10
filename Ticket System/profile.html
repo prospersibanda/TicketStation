@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile - TicketStation</title>
+    <link rel="stylesheet" href="profile.css">
+</head>
+<body>
+    <div class="container">
+        <nav class="sidebar">
+            <div class="profile">
+                <img src="./TicketStation/Ticket System/img/profile-picture2.jpeg" alt="Profile Picture" class="profile-pic">
+                <h3>Kevin Malou</h3>
+            </div>
+            <ul>
+                <li id="profileTab">Profile</li>
+                <li id="ticketsTab">Tickets</li>
+                <li id="bankDetailsTab">Bank details</li>
+            </ul>
+        </nav>
+        <div class="main-content">
+            <section id="profileSection">
+                <h2>Personal Information</h2>
+                <form id="profileForm">
+                    <div class="form-group">
+                        <label for="firstName">First Name</label>
+                        <input type="text" id="firstName" value="Kevin">
+                    </div>
+                    <div class="form-group">
+                        <label for="lastName">Last Name</label>
+                        <input type="text" id="lastName" value="Malou">
+                    </div>
+                    <div class="form-group">
+                        <label for="phoneNumber">Phone Number</label>
+                        <input type="text" id="phoneNumber" value="Cell number">
+                    </div>
+                    <div class="form-group">
+                        <label for="country">Country</label>
+                        <input type="text" id="country" value="South Africa">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" value="maloukevin6@gmail.com">
+                    </div>
+                    <button type="submit">Save</button>
+                </form>
+            </section>
+
+            <section id="ticketsSection" style="display:none;">
+                <h2>Orders</h2>
+                <h3>Completed Orders</h3>
+                <input type="text" placeholder="Search orders..." />
+                <input type="date" />
+                <button type="button">Clear</button>
+                <ul id="ordersList">
+                    <li>Recents Tickets</li>
+                </ul>
+            </section>
+
+            <section id="bankDetailsSection" style="display:none;">
+                <h2>Update your bank details</h2>
+                <form id="bankDetailsForm">
+                    <div class="form-group">
+                        <label for="idNumber">ID number</label>
+                        <input type="text" id="idNumber">
+                    </div>
+                    <div class="form-group">
+                        <label for="bankName">Bank Name</label>
+                        <select id="bankName">
+                            <option value="">Select your bank</option>
+                            <option value="Bank A">First National Bank (FNB)</option>
+                            <option value="Bank B">ABSA</option>
+                            <option value="Bank C">Nedbank</option>
+                            <option value="Bank D">Capitec</option>
+                            <option value="Bank E">Standard Bank</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="accountNumber">Card Number</label>
+                        <input type="text" id="accountNumber">
+                    </div>
+                    <div class="form-group">
+                        <label for="branchCode">Bank branch code</label>
+                        <input type="text" id="branchCode">
+                    </div>
+                    <div class="form-group">
+                        <label for="cvvNumber">CVV</label>
+                        <input type="text" id="cvvNumber">
+                    </div>
+                    <div class="form-group">
+                        <label for="accountType">Account Type</label>
+                        <select id="accountType">
+                            <option value="cheque">Cheque</option>
+                            <option value="savings">Savings</option>
+                            <option value="debit">Debit</option>
+                        </select>
+                    </div>
+                    <button type="submit">Save</button>
+                </form>
+            </section>
+        </div>
+    </div>
+    <script src="profile.js"></script>
+</body>
+</html>
