@@ -12,11 +12,7 @@ body {
     color: var(--gray-900);
     background-color: var(--gray-50);
 }
-.container {
-    max-width: 940px;
-    margin: 0 auto;
-    padding: 0 16px;
-}
+
 /* end: Globals */
 
 
@@ -332,3 +328,47 @@ input:checked + .payment-method-item::before {
     }
 }
 /* end: Breakpoints */
+.content-table {
+    border-collapse: collapse;
+    font-size: 0.9em;
+    border-radius: 5px 5px 0 0;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    width: 80%; /* Ensure responsive width */
+    margin: 0 auto; /* Center the table */
+}
+
+.content-table th,
+.content-table td,
+.content-table tr {
+    box-sizing: border-box; /* Apply consistent sizing */
+}
+
+.content-table thead tr {
+    background-color: #e02454;
+    color: #ffffff;
+    text-align: left;
+    font-weight: bold;
+}
+
+.content-table th,
+.content-table td {
+    padding: 12px 15px;
+}
+
+.content-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+.content-table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+.content-table tbody tr:last-of-type {
+    border-bottom: 2px solid #e02454;
+}
+
+.content-table tbody tr.active-row {
+    font-weight: bold;
+    color: #e02454;
+}
