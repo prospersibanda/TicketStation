@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bus Tickets</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <button class="home">Home</button>
+<div id="buttons">
+    <button class="btn" onclick="displayAllBusTickets()" >Show All</button>
+    <button class="btn" onclick="filterBusByLocation('Polokwane')" >Polokwane To Cape Town</button>
+    <button class="btn" onclick="filterBusByLocation('Gauteng')" >Polokwane To Gauteng</button>
+    <button class="btn" onclick="filterBusByLocation('Gqeberha')" >Durban To Gqeberha</button>
+    <button class="btn" onclick="filterBusByLocation('LadySmith')" >Free State To LadySmith</button>
+</div>
+
+<div id="bus-ticket-container"></div>
+
+
+<button class="book" onclick="proceedToCheckout()" >Proceed to Checkout</button>
+
+
+<script src="bus.js"></script>
+</body>
+</html>

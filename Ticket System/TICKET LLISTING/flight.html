@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Domestic Flight Tickets</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <button class="home">Home</button>
+    
+<div id="buttons">
+    <button class="btn" onclick="displayAllTickets()" >Show All</button>
+    <button class="btn"  onclick="filterByLocation('Cape Town')">Cape Town</button>
+    <button class="btn"  onclick="filterByLocation('Free State')"  >Free State</button>
+    <button class="btn" onclick="filterByLocation('Durban')"  >Durban</button>
+    <button class="btn" onclick="filterByLocation('Gauteng')">Gauteng</button>
+    <button class="btn" onclick="filterByLocation('Limpopo')">Limpopo</button>
+</div>
+
+<div id="ticket-container"></div>
+
+<button class="book" onclick="proceedToCheckout()" >Proceed to Checkout</button>
+
+
+
+
+<script src="flight.js"></script>
+</body>
+</html>

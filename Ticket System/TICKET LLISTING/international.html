@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>International Flight Tickets</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <button class="home">Home</button>
+    
+<div id="buttons">
+    <button class="btn" onclick="displayAllInternationallTickets()" >Show All</button>
+    <button class="btn" onclick="filterInternationalByLocation('Paris,France')">Paris, France</button>
+    <button class="btn" onclick="filterInternationalByLocation('Dubai Doha')">Dubai, Doha</button>
+    <button class="btn" onclick="filterInternationalByLocation('Bali Indonesia')">Bali Indonesia</button>
+    <button class="btn" onclick="filterInternationalByLocation('Greece')">Greece</button>
+    <button class="btn" onclick="filterInternationalByLocation('Turkey')">Turkey</button>
+</div>
+
+<div id="international-ticket-container"></div>
+
+<button class="book" onclick="proceedToCheckoutInternational()" >Proceed to Checkout</button>
+
+
+
+
+
+<script src="international.js"></script>
+</body>
+</html>

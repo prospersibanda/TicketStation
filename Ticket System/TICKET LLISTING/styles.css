@@ -1,0 +1,117 @@
+/* domestic flight */
+body{
+  background-color:  #F2F4F7;
+margin:30px
+}
+/* #e02454   */
+.home{
+     background-color: rgba(21, 21, 92, 0.917);
+     color: white;
+     padding: 20px 80px;
+     border: none;
+     border-radius: 20px;
+     font-size: 20px;
+     margin: 30px;
+     cursor: pointer;
+}
+.home:hover{
+   border: 1px solid rgba(21, 21, 92, 0.917);
+   background-color: white;
+   color: black;
+   transition: ease-in-out;
+}
+
+.btn{
+    margin: 10px 10px;
+    background-color: rgba(21, 21, 92, 0.917);
+     color: white;
+     padding: 12px 30px;
+     border: none;
+     border-radius: 20px;
+     font-size: 14px;
+     margin: 30px;
+     cursor: pointer;
+     box-shadow: 20px 20px 20px grey;  
+     font-family: Cochin, Georgia, Times, 'Times New Roman', serif;
+     font-size: 20px;
+}
+.btn:hover{
+    border: 1px solid rgba(21, 21, 92, 0.917);
+    background-color: white;
+    color: black;
+
+}
+
+#ticket-container{
+    margin-right: 30px;
+    justify-content: space-around;
+}
+.ticket{
+    padding: 16px; 
+    box-shadow: 20px 20px 20px   grey; 
+    border-radius: 30px;
+    padding-top: 30px;
+    margin-top: 20px;
+    display: flex;
+    align-items: flex-start;
+    background-color: white;
+    margin-right: 100px;
+
+}
+
+.ticket-details{
+   
+}
+.ticket-type{
+color: red;
+font-size: 25px;
+padding-bottom: 10px;
+font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+.ticket-location{
+    font-size: 20px;
+    color: rgba(21, 21, 92, 0.917);
+}
+.ticket-destination{
+    font-size: 20px;
+    color: rgba(21, 21, 92, 0.917);
+}
+.ticket-date{
+    font-size: 20px;
+    color: rgba(21, 21, 92, 0.917);
+    padding-top: 10px;
+}
+hr{
+    font-size: 30px;
+}
+.ticket-price{
+    font-size: 20px;
+    font-weight: bolder;
+    padding-top: 30px;
+    color: black;
+}
+
+.book{
+    background-color: rgba(21, 21, 92, 0.917);
+    color: white;
+    padding: 20px 80px;
+    border: none;
+    border-radius: 20px;
+    font-size: 20px;
+    margin: 30px;
+    cursor: pointer; 
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; 
+}
+.book:hover{
+    border: 1px solid rgba(21, 21, 92, 0.917);
+   background-color: white;
+   color: black;
+   transition: ease-in-out;
+   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+/* train */
+.ticket-time{
+
+}
+
