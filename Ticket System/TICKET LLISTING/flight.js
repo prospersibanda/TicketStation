@@ -21,22 +21,22 @@ class Ticket {
         }
         generateTicketHTML() {
             return `
-<div class="ticket">
-            <label for="ticket-${this.type}-${this.departure}-${this.destination}-${this.date}">
-                <div class="ticket-type">${this.type.toUpperCase()}</div>
-                <div class="ticket-details">
-                    <span class="ticket-location">From: ${this.departure}</span>
-                    <span class="ticket-destination">To: ${this.destination}</span>
-                    <div class="ticket-date">Date: ${this.date}</ddiv>
+                <div class="ticket">
+                    <label for="ticket-${this.type}-${this.departure}-${this.destination}-${this.date}-${this.price}">
+                        <div class="ticket-type">${this.type.toUpperCase()}</div>
+                        <div class="ticket-details">
+                            <span class="ticket-location">From: ${this.departure}</span>
+                            <span class="ticket-destination">To: ${this.destination}</span>
+                            <div class="ticket-date">Date: ${this.date}</div>
+                        </div>
+                        <div class="ticket-price">Price: R ${this.price}</div>
+                        <input type="checkbox" id="ticket-${this.type}-${this.departure}-${this.destination}-${this.date}-${this.price}">
+                    </label>
                 </div>
-               
-                <div class="ticket-price">Price: R ${this.price}</div>
-                <input type="checkbox" class="checkbox" id="ticket-${this.type}-${this.departure}-${this.destination}-${this.date}">
-            </label>
-        </div>
-
             `;
         }
+        
+        
 }
 const tickets = [
 new Ticket('Airlink','Cape Town','Gauteng','2024-08-10', '2500' ),
@@ -83,17 +83,19 @@ function filterByLocation(location){
 }
 displayAllTickets();
 
-
-function proceedToCheckout(){
+function proceedToCheckout() {
     const selectedTickets = [];
-    tickets.forEach(ticket =>{
-        const identifier = `${ticket.type}-${ticket.departure}-${ticket.destination}-${ticket.date}-${ticket.price}`
+    tickets.forEach(ticket => {
+        const identifier = `${ticket.type}-${ticket.departure}-${ticket.destination}-${ticket.date}-${ticket.price}`;
         const checkbox = document.getElementById(`ticket-${identifier}`);
-        if(checkbox && checkbox.checked){
+        if (checkbox && checkbox.checked) {
             selectedTickets.push(ticket);
         }
     });
+    
+    console.log("Selected tickets before saving:", selectedTickets); // Debugging line
+
     localStorage.setItem('selectedFlightTickets', JSON.stringify(selectedTickets));
 
-    window.location.href = 'checkout.html';
+    window.location.href = '../signup.html';
 }

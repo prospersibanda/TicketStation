@@ -1,90 +1,115 @@
-// Class to handle booking details and calculations
-class Booking {
-  constructor(flightType, origin, destination, basePrice, serviceFee, discount) {
-    this.flightType = flightType;
-    this.origin = origin;
-    this.destination = destination;
-    this.basePrice = basePrice;
-    this.serviceFee = serviceFee;
-    this.discount = discount;
-  }
-
-  // Method to calculate total price
-  calculateTotal() {
-    return this.basePrice + this.serviceFee - this.discount;
-  }
-
-  // Method to display booking summary
-  displaySummary() {
-    const totalPrice = this.calculateTotal();
-    document.querySelector('.payment-plan-info-name').textContent = `${this.flightType} from ${this.origin} to ${this.destination}`;
-    document.querySelector('.payment-plan-info-price').textContent = `R${this.basePrice}`;
-    document.querySelector('.payment-summary-item:nth-of-type(1) .payment-summary-price').textContent = `R${this.serviceFee}`;
-    document.querySelector('.payment-summary-item:nth-of-type(2) .payment-summary-price').textContent = `-R${this.discount}`;
-    document.querySelector('.payment-summary-total .payment-summary-price').textContent = `R${totalPrice}`;
-  }
+// Function to format price values
+const ticketsSection = document.getElementById('ticketsSection');
+ticketsSection.style.display = 'none';
+function formatPrice(price) {
+  return parseFloat(price).toFixed(2);
 }
 
-// Class to handle payment method
-class PaymentMethod {
-  constructor(method) {
-    this.method = method;
+
+// Function to display tickets in the table and update the summary
+function displayTickets() {
+  const ticketsBody = document.getElementById('tickets-body');
+  const ticketsContainer = document.getElementById('ticketsContainer'); // Container for the tickets
+  ticketsBody.innerHTML = '';
+  ticketsContainer.innerHTML = ''; // Clear the existing tickets
+
+  // Retrieve tickets from local storage
+  const selectedFlightTickets = JSON.parse(localStorage.getItem('selectedFlightTickets')) || [];
+  const selectedTrainTickets = JSON.parse(localStorage.getItem('selectedTrainTickets')) || [];
+  const selectedInternationalTickets = JSON.parse(localStorage.getItem('selectedInternationalTickets')) || [];
+  const selectedBusTickets = JSON.parse(localStorage.getItem('selectedBusTickets')) || [];
+  const allTickets = [...selectedFlightTickets, ...selectedTrainTickets, ...selectedInternationalTickets, ...selectedBusTickets];
+
+  console.log("Retrieved tickets:", allTickets); // Debugging line
+
+  if (allTickets.length === 0) {
+      ticketsBody.innerHTML = '<tr><td colspan="5">No tickets selected</td></tr>';
+      return;
   }
 
-  // Method to validate payment details
-  validateDetails() {
-    const email = document.getElementById('email').value.trim();
-    const cardNumber = document.getElementById('card-number').value.trim();
-    const expiryDate = document.getElementById('expiry-date').value.trim();
-    const cvv = document.getElementById('cvv').value.trim();
+  let total = 0;
 
-    if (!email || !cardNumber || !expiryDate || !cvv) {
-      alert('Please fill out all payment details.');
-      return false;
-    }
-    // Basic email validation
-    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailPattern.test(email)) {
-      alert('Please enter a valid email address.');
-      return false;
-    }
-    // Additional validation logic can be added here
-    return true;
-  }
-}
+  allTickets.forEach((ticket, index) => {
+      const { type, departure, destination, price } = ticket;
+      
+      // Add ticket to the table
+      ticketsBody.innerHTML += `
+          <tr>
+              <td>${index + 1}</td>
+              <td>${type}</td>
+              <td>${departure}</td>
+              <td>${destination}</td>
+              <td>R ${formatPrice(price)}</td>
+          </tr>
+      `;
 
-// Initialization
-document.addEventListener('DOMContentLoaded', () => {
-  // Sample booking details
-  const booking = new Booking('Round Trip', 'NYC', 'LA', 7499, 800, 1200);
-  booking.displaySummary();
+      // Add ticket details to the container
+      ticketsContainer.innerHTML += `
+          <div class="payment-plan">
+              <div class="payment-plan-type">${type}</div>
+              <div class="payment-plan-info">
+                  <div class="payment-plan-info-name" data-origin="${departure}" data-destination="${destination}" data-price="${price}">
+                      ${type} from ${departure} to ${destination}
+                  </div>
+                  <div class="payment-plan-info-price">R ${formatPrice(price)}</div>
+              </div>
+              <a href="#" class="payment-plan-change">Change</a>
+          </div>
+      `;
 
-  // Handle form submission
-  const paymentForm = document.querySelector('.payment-form');
-  paymentForm.addEventListener('submit', (event) => {
-    event.preventDefault(); // Prevent form from submitting
-
-    const paymentMethod = new PaymentMethod();
-    if (paymentMethod.validateDetails()) {
-      // Proceed with payment processing
-      alert('Payment details are valid. Proceeding with payment...');
-      // Redirect or further processing here
-      const paymentSection = document.getElementById('paymentSection');
-      const ticketsSection = document.getElementById('ticketsSection');
-      ticketsSection.style.display = 'block';
-      const userName = localStorage.getItem('userName');
-const tableBody = document.querySelector('#tickets-body');
-
-// create a new table row with the user's name
-const newRow = document.createElement('tr');
-newRow.innerHTML = `
-  <td>1</td>
-  <td>${userName}</td>
-  <td>Joburg</td>
-  <td>Durban</td>
-  <td>R7499</td>
-`;
-tableBody.appendChild(newRow);
-    }
+      total += parseFloat(price);
   });
+
+  updateSummary(total);
+}
+
+// Function to update the payment summary
+function updateSummary(total) {
+  const totalElement = document.getElementById('total');
+  const ticketPriceElement = document.getElementById('ticketPrice');
+  const departureAndDestinationElement = document.getElementById('departureAndDestination');
+
+  console.log("Total price:", total); // Debugging line
+  totalElement.textContent = `R ${formatPrice(total)}`;
+  ticketPriceElement.textContent = `R ${formatPrice(total)}`;
+
+  // Example: Displaying information for the first ticket
+  // If you want to display more specific info for each ticket, consider adjusting this logic.
+  if (total > 0) {
+      departureAndDestinationElement.textContent = `Total Price for all tickets`;
+  } else {
+      departureAndDestinationElement.textContent = "No tickets selected";
+  }
+}
+
+// Event listener for form submission
+document.querySelector('.payment-form').addEventListener('submit', function(event) {
+  event.preventDefault(); // Prevent form submission for testing
+
+  // Collect payment data
+  const email = document.getElementById('email').value;
+  const cardNumber = document.getElementById('card-number').value;
+  const expiryDate = document.getElementById('expiry-date').value;
+  const cvv = document.getElementById('cvv').value;
+
+  // Validate payment details
+  if (!email || !cardNumber || !expiryDate || !cvv) {
+      alert('Please fill in all payment details.');
+      return;
+  }
+
+  // Process payment (mock)
+  alert('Payment processed successfully.');
+
+  // Clear local storage
+  localStorage.removeItem('selectedFlightTickets');
+  localStorage.removeItem('selectedTrainTickets');
+
+  // Redirect or show confirmation
+  ticketsSection.style.display = 'block';
+   // Redirect to confirmation page
+   
 });
+
+// Display tickets when the page loads
+displayTickets();

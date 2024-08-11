@@ -10,7 +10,7 @@
     <div class="container">
         <nav class="sidebar">
             <div class="profile">
-                <img src="./TicketStation/Ticket System/img/profile-picture2.jpeg" alt="Profile Picture" class="profile-pic">
+                <img src="./img/profile-picture2.jpeg" alt="Profile Picture" class="profile-pic">
                 <h3>Kevin Malou</h3>
             </div>
             <ul>
@@ -47,16 +47,27 @@
                 </form>
             </section>
 
-            <section id="ticketsSection" style="display:none;">
-                <h2>Orders</h2>
-                <h3>Completed Orders</h3>
-                <input type="text" placeholder="Search orders..." />
-                <input type="date" />
-                <button type="button">Clear</button>
-                <ul id="ordersList">
-                    <li>Recents Tickets</li>
-                </ul>
-            </section>
+            <section style="width: 1000px; display: none;" id="tickets">
+                <div class="parent-container">
+                    <table class="content-table" style="justify-content: space-between;">
+                        <thead>
+                          <tr>
+                            <th>#</th>
+                            <th style="width: 200px;">Name</th>
+                            <th style="width: 200px;">Departure</th>
+                            <th style="width: 200px;">Destination</th>
+                            <th style="width: 200px;">Price</th>
+                          </tr>
+                        </thead>
+                        <tbody id="confirmation-tickets-body">
+                        
+                        </tbody>
+                       
+                      </table>
+                </div>
+                <div>
+                </div>
+             </section>
 
             <section id="bankDetailsSection" style="display:none;">
                 <h2>Update your bank details</h2>
@@ -101,6 +112,7 @@
             </section>
         </div>
     </div>
+    <script src="confirmation.js"></script>
     <script src="profile.js"></script>
 </body>
 </html>

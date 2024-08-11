@@ -105,13 +105,15 @@ displayAllInternationallTickets();
 function proceedToCheckoutInternational(){
     const selectedTickets = [];
     internationalTickets.forEach(ticket =>{
-        const identifier = `${ticket.type}-${ticket.departure}-${ticket.destination}-${ticket.date}-${ticket.tripType}`;
-        const checkbox = document.getElementById(`ticket-${identifier}`);
+        const identifier = `ticket-${ticket.type}-${ticket.departure}-${ticket.destination}-${ticket.date}-${ticket.tripType}`;
+        const checkbox = document.getElementById(identifier);
         if (checkbox && checkbox.checked){
+            console.log(`Ticket selected: ${ticket.type} from ${ticket.departure} to ${ticket.destination} on ${ticket.date}`);
             selectedTickets.push(ticket);
         }
     });
+    console.log(`Selected tickets: ${JSON.stringify(selectedTickets)}`);
     localStorage.setItem('selectedInternationalTickets', JSON.stringify(selectedTickets));
 
-    window.location.href = 'checkout.html';
+    window.location.href = '../signup.html';
 }

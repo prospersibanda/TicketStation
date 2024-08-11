@@ -1,5 +1,6 @@
 class BusTicket{
-    constructor(departure,destination, date,time,price){
+    constructor(type,departure,destination, date,time,price){
+        this.type = type;
         this.departure = departure;
         this.destination = destination;
         this.date = date;
@@ -42,28 +43,28 @@ class BusTicket{
 
 
 const busTickets = [
-    new BusTicket('Polokwane','Cape Town', '2024-08-23', '01H00', 750 ),
-    new BusTicket('Polokwane','Cape Town', '2024-08-29', '05H00', 750 ),
-    new BusTicket('Polokwane','Cape Town', '2024-09-23', '03H00', 750 ),
-    new BusTicket('Polokwane','Cape Town', '2024-08-22', '04H00', 750 ),
+    new BusTicket('Bus','Polokwane','Cape Town', '2024-08-23', '01H00', 750 ),
+    new BusTicket('Bus','Polokwane','Cape Town', '2024-08-29', '05H00', 750 ),
+    new BusTicket('Bus','Polokwane','Cape Town', '2024-09-23', '03H00', 750 ),
+    new BusTicket('Bus','Polokwane','Cape Town', '2024-08-22', '04H00', 750 ),
 
-    new BusTicket('Polokwane','Gauteng', '2024-08-15', '12H00', 300 ),
-    new BusTicket('Polokwane','Gauteng', '2024-08-20', '08H00', 300 ),
-    new BusTicket('Polokwane','Gauteng', '2024-08-21', '09H00', 300 ),
-    new BusTicket('Polokwane','Gauteng', '2024-08-24', '09H00', 300 ),
+    new BusTicket('Bus','Polokwane','Gauteng', '2024-08-15', '12H00', 300 ),
+    new BusTicket('Bus','Polokwane','Gauteng', '2024-08-20', '08H00', 300 ),
+    new BusTicket('Bus','Polokwane','Gauteng', '2024-08-21', '09H00', 300 ),
+    new BusTicket('Bus','Polokwane','Gauteng', '2024-08-24', '09H00', 300 ),
 
-    new BusTicket('Durban','Gqeberha', '2024-08-24', '09H00', 500 ),
-    new BusTicket('Durban','Gqeberha', '2024-09-24', '09H00', 500 ),
-    new BusTicket('Durban','Gqeberha', '2024-09-2', '09H00', 500 ),
-    new BusTicket('Durban','Gqeberha', '2024-09-15', '09H00', 500 ),
+    new BusTicket('Bus','Durban','Gqeberha', '2024-08-24', '09H00', 500 ),
+    new BusTicket('Bus','Durban','Gqeberha', '2024-09-24', '09H00', 500 ),
+    new BusTicket('Bus','Durban','Gqeberha', '2024-09-2', '09H00', 500 ),
+    new BusTicket('Bus','Durban','Gqeberha', '2024-09-15', '09H00', 500 ),
 
 
-    new BusTicket('Free State','LadySmith', '2024-08-12', '09H00', 450 ),
-    new BusTicket('Free State','LadySmith', '2024-08-23', '05H00', 450 ),
-    new BusTicket('Free State','LadySmith', '2024-08-25', '10H00', 450),
-    new BusTicket('Free State','LadySmith', '2024-08-29', '11H00', 450),
-    new BusTicket('Free State','LadySmith', '2024-09-02', '09H00', 450 ),
-    new BusTicket('Free State','LadySmith', '2024-09-03', '09H00', 450 ),
+    new BusTicket('Bus','Free State','LadySmith', '2024-08-12', '09H00', 450 ),
+    new BusTicket('Bus','Free State','LadySmith', '2024-08-23', '05H00', 450 ),
+    new BusTicket('Bus','Free State','LadySmith', '2024-08-25', '10H00', 450),
+    new BusTicket('Bus','Free State','LadySmith', '2024-08-29', '11H00', 450),
+    new BusTicket('Bus','Free State','LadySmith', '2024-09-02', '09H00', 450 ),
+    new BusTicket('Bus','Free State','LadySmith', '2024-09-03', '09H00', 450 ),
 ];
 
 function displayAllBusTickets(){
@@ -90,13 +91,13 @@ displayAllBusTickets();
 function proceedToCheckout(){
     const selectedTickets = [];
     busTickets.forEach(ticket =>{
-        const identifier = `${ticket.departure}-${ticket.destination}-${ticket.date}-${ticket.time}-${ticket.price}`
-        const checkbox = document.getElementById(`ticket-${identifier}`);
+        const identifier = `ticket-${ticket.departure}-${ticket.destination}-${ticket.date}-${ticket.time}-${ticket.price}`
+        const checkbox = document.getElementById(identifier);
         if(checkbox && checkbox.checked){
             selectedTickets.push(ticket);
         }
     });
     localStorage.setItem('selectedBusTickets', JSON.stringify(selectedTickets));
 
-    window.location.href = 'checkout.html';
+    window.location.href = '../signup.html';
 }
