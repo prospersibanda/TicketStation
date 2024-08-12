@@ -80,3 +80,41 @@ document.getElementById('profileForm').addEventListener('submit', function(event
 // Show profile section by default
 showSection('profile');
 
+ // Load saved data from local storage
+ document.addEventListener("DOMContentLoaded", function() {
+    const idNumber = localStorage.getItem('idNumber');
+    const bankName = localStorage.getItem('bankName');
+    const accountNumber = localStorage.getItem('accountNumber');
+    const branchCode = localStorage.getItem('branchCode');
+    const cvvNumber = localStorage.getItem('cvvNumber');
+    const accountType = localStorage.getItem('accountType');
+
+    if (idNumber) document.getElementById('idNumber').value = idNumber;
+    if (bankName) document.getElementById('bankName').value = bankName;
+    if (accountNumber) document.getElementById('accountNumber').value = accountNumber;
+    if (branchCode) document.getElementById('branchCode').value = branchCode;
+    if (cvvNumber) document.getElementById('cvvNumber').value = cvvNumber;
+    if (accountType) document.getElementById('accountType').value = accountType;
+});
+
+// Save data to local storage on form submission
+document.getElementById('bankDetailsForm').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent form submission
+
+    const idNumber = document.getElementById('idNumber').value;
+    const bankName = document.getElementById('bankName').value;
+    const accountNumber = document.getElementById('accountNumber').value;
+    const branchCode = document.getElementById('branchCode').value;
+    const cvvNumber = document.getElementById('cvvNumber').value;
+    const accountType = document.getElementById('accountType').value;
+
+    localStorage.setItem('idNumber', idNumber);
+    localStorage.setItem('bankName', bankName);
+    localStorage.setItem('accountNumber', accountNumber);
+    localStorage.setItem('branchCode', branchCode);
+    localStorage.setItem('cvvNumber', cvvNumber);
+    localStorage.setItem('accountType', accountType);
+
+    alert('Bank details saved successfully!');
+});
+

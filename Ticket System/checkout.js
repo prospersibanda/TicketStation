@@ -101,9 +101,6 @@ document.querySelector('.payment-form').addEventListener('submit', function(even
   // Process payment (mock)
   alert('Payment processed successfully.');
 
-  // Clear local storage
-  localStorage.removeItem('selectedFlightTickets');
-  localStorage.removeItem('selectedTrainTickets');
 
   // Redirect or show confirmation
   ticketsSection.style.display = 'block';
